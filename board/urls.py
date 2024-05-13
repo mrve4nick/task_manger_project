@@ -10,7 +10,11 @@ from board.views import (
     WorkerCreateView,
     WorkerUpdateView,
     WorkerDeleteView,
-    WorkerDetailView
+    WorkerDetailView,
+    TaskTypeListView,
+    TaskTypeCreateView,
+    TaskTypeUpdateView,
+    TaskTypeDeleteView,
 )
 
 urlpatterns = [
@@ -24,6 +28,10 @@ urlpatterns = [
     path("board/workers/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     path("board/workers/<int:pk>/update/", WorkerUpdateView.as_view(), name="worker-update"),
     path("board/workers/<int:pk>/delete/", WorkerDeleteView.as_view(), name="worker-delete"),
+    path("board/task-type/", TaskTypeListView.as_view(), name="task-type-list"),
+    path("board/task-type/create/", TaskTypeCreateView.as_view(), name="task-type-create"),
+    path("board/task-type/<int:pk>/update/", TaskTypeUpdateView.as_view(), name="task-type-update"),
+    path("board/task-type/<int:pk>/delete/", TaskTypeDeleteView.as_view(), name="task-type-delete"),
 ]
 
 app_name = "board"
