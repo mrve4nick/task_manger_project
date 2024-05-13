@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 
 class Position(models.Model):
@@ -14,6 +15,9 @@ class Position(models.Model):
 
 class Worker(AbstractUser):
     position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name="workers")
+
+    def get_absolute_url(self):
+        return reverse("board:worker-detail", kwargs={"pk": self.pk})
 
 
 PRIORITY_CHOICES = (
