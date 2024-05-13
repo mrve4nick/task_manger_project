@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for task_type in task_type_list %}
+    <p>{{ task_type.name }}</p>
+  {% endfor %}
+{% endblock %}
