@@ -49,3 +49,7 @@ class WorkerDeleteView(generic.DeleteView):
     model = Worker
     success_url = reverse_lazy("board:worker-list")
 
+
+class WorkerDetailView(generic.DetailView):
+    model = Worker
+
