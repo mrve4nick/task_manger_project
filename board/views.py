@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 
 from board.forms import WorkerCreationForm
-from board.models import Worker, Position
+from board.models import Worker, Position, TaskType
 
 
 class PositionListView(generic.ListView):
@@ -53,3 +53,25 @@ class WorkerDeleteView(generic.DeleteView):
 class WorkerDetailView(generic.DetailView):
     model = Worker
 
+
+class TaskTypeListView(generic.ListView):
+    model = TaskType
+    context_object_name = "task_type_list"
+    template_name = "board/tasktype_list.html"
+
+
+class TaskTypeCreateView(generic.CreateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("board:task-type-list")
+
+
+class TaskTypeUpdateView(generic.UpdateView):
+    model = TaskType
+    fields = "__all__"
+    success_url = reverse_lazy("board:task-type-list")
+
+
+class TaskTypeDeleteView(generic.DeleteView):
+    model = TaskType
+    success_url = reverse_lazy("board:task-type-list")
