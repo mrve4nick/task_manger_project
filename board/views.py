@@ -102,3 +102,8 @@ class TaskUpdateView(generic.UpdateView):
 class TaskDeleteView(generic.DeleteView):
     model = Task
     success_url = reverse_lazy("board:task-list")
+
+
+class IndexView(generic.TemplateView):
+    template_name = "board/index.html"
+
