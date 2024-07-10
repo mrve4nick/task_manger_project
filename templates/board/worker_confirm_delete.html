@@ -6,6 +6,6 @@
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
-    <a href="{% url "board:worker-detail" pk=worker.id %}">No</a>
+    <a href="{% url "board:worker-detail" pk=worker.id %}" class="btn btn-primary">No</a>
   </form>
 {% endblock %}
