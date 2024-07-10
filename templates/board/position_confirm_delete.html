@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>Delete Position?</h1>
-  {{ position.name }}
+  <h1>Delete Position "{{ position.name }}"?</h1>
   <form action="" method="post">
     {% csrf_token %}
     <input type="submit" value="Yes" class="btn btn-danger">
-    <a href="{% url "board:position-list" %}">No</a>
+    <a href="{% url "board:position-list" %}" class="btn btn-primary">No</a>
   </form>
 {% endblock %}
