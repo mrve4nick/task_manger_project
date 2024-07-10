@@ -51,3 +51,6 @@ class Task(models.Model):
     )
     task_type = models.ForeignKey(TaskType, on_delete=models.CASCADE)
     assignees = models.ManyToManyField(Worker, related_name="assigned_tasks", blank=True)
+
+    def get_absolute_url(self):
+        return reverse("board:task-detail", kwargs={"pk": self.pk})
