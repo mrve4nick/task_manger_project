@@ -2,7 +2,7 @@
 {% block content %}
   {% for task in task_list %}
     <p>{{ task.name }}</p>
-    <p>{{ task.description }}</p>
+    <p>{{ task.description|slice:150 }}...</p>
     <p>{{ task.deadline }}</p>
     <p>{{ task.is_completed }}</p>
     <p>{{ task.priority }}</p>
