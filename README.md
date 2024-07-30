@@ -9,5 +9,6 @@ Each task can be edited, assigned to one or multiple employees, and prioritized.
 git clone git@github.com:Unlie9/mrve4nick/task_manger_project.git
 cd task_manger_project
 python -m venv venv
+pip install requirements.txt
 python manage.py runserver
 ```
