@@ -90,8 +90,6 @@ class TaskDetailView(generic.DetailView):
 class TaskCreateView(generic.CreateView):
     model = Task
     form_class = TaskCreationForm
-    # fields = "__all__"
-    # success_url = reverse_lazy("board:task-list")
 
 
 class TaskUpdateView(generic.UpdateView):
@@ -107,4 +105,3 @@ class TaskDeleteView(generic.DeleteView):
 
 class IndexView(generic.TemplateView):
     template_name = "board/index.html"
-
