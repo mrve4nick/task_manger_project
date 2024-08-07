@@ -14,7 +14,7 @@ class Position(models.Model):
 
 
 class Worker(AbstractUser):
-    position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name="workers")
+    position = models.ForeignKey(Position, on_delete=models.CASCADE, related_name="workers", null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse("board:worker-detail", kwargs={"pk": self.pk})
