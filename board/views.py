@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
-from django.views import generic
+from django.views import generic, View
 
 from board.forms import WorkerCreationForm, TaskCreationForm
 from board.models import Worker, Position, TaskType, Task
+from board.forms import TaskTypeForm
 
 
 class PositionListView(generic.ListView):
@@ -54,27 +55,36 @@ class WorkerDetailView(generic.DetailView):
     model = Worker
 
 
-class TaskTypeListView(generic.ListView):
-    model = TaskType
-    context_object_name = "task_type_list"
-    template_name = "board/tasktype_list.html"
+class TaskTypeListCreateView(View):
+    def get(self, request):
+        task_types = TaskType.objects.all()
+        return render(request, 'board/tasktype_list.html', {'task_type_list': task_types})
+
+    def post(self, request):
+        form = TaskTypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('board:task-type-list-create')
+        return render(request, 'board/tasktype_list.html', {'form': form, 'task_type_list': TaskType.objects.all()})
 
 
-class TaskTypeCreateView(generic.CreateView):
-    model = TaskType
-    fields = "__all__"
-    success_url = reverse_lazy("board:task-type-list")
+class TaskTypeDetailView(View):
+    def get(self, request, pk):
+        task_type = get_object_or_404(TaskType, pk=pk)
+        form = TaskTypeForm(instance=task_type)
+        return render(request, 'board/tasktype_detail.html', {'form': form, 'task_type': task_type})
 
-
-class TaskTypeUpdateView(generic.UpdateView):
-    model = TaskType
-    fields = "__all__"
-    success_url = reverse_lazy("board:task-type-list")
-
-
-class TaskTypeDeleteView(generic.DeleteView):
-    model = TaskType
-    success_url = reverse_lazy("board:task-type-list")
+    def post(self, request, pk):
+        task_type = get_object_or_404(TaskType, pk=pk)
+        if 'delete' in request.POST:
+            task_type.delete()
+            return redirect('board:task-type-list-create')
+        else:
+            form = TaskTypeForm(request.POST, instance=task_type)
+            if form.is_valid():
+                form.save()
+                return redirect('board:task-type-list-create')
+            return render(request, 'board/tasktype_detail.html', {'form': form, 'task_type': task_type})
 
 
 class TaskListView(generic.ListView):
