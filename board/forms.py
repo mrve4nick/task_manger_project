@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from board.models import Worker, Task
+from board.models import Worker, Task, TaskType
 
 
 class WorkerCreationForm(UserCreationForm):
@@ -35,3 +35,9 @@ class TaskCreationForm(forms.ModelForm):
         widgets = {
             "deadline": forms.DateTimeInput(attrs={"type": "datetime-local", }),
         }
+
+
+class TaskTypeForm(forms.ModelForm):
+    class Meta:
+        model = TaskType
+        fields = '__all__'
