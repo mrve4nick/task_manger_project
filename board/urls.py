@@ -11,10 +11,6 @@ from board.views import (
     WorkerUpdateView,
     WorkerDeleteView,
     WorkerDetailView,
-    # TaskTypeListView,
-    # TaskTypeCreateView,
-    # TaskTypeUpdateView,
-    # TaskTypeDeleteView,
     TaskListView,
     TaskDetailView,
     TaskCreateView,
@@ -35,13 +31,13 @@ urlpatterns = [
     path("board/workers/<int:pk>/", WorkerDetailView.as_view(), name="worker-detail"),
     path("board/workers/<int:pk>/update/", WorkerUpdateView.as_view(), name="worker-update"),
     path("board/workers/<int:pk>/delete/", WorkerDeleteView.as_view(), name="worker-delete"),
-    path('task-type/', TaskTypeListCreateView.as_view(), name='task-type-list-create'),
-    path('task-type/<int:pk>/', TaskTypeDetailView.as_view(), name='task-type-detail'),
     path("board/task/", TaskListView.as_view(), name="task-list"),
     path("board/task/<int:pk>/", TaskDetailView.as_view(), name="task-detail"),
     path("board/task/create/", TaskCreateView.as_view(), name="task-create"),
     path("board/task/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),
     path("board/task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
+    path('task-type/', TaskTypeListCreateView.as_view(), name='task-type-list-create'),
+    path('task-type/<int:pk>/', TaskTypeDetailView.as_view(), name='task-type-detail'),
 ]
 
 app_name = "board"
