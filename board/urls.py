@@ -16,7 +16,9 @@ from board.views import (
     TaskCreateView,
     TaskUpdateView,
     TaskDeleteView,
-    IndexView, TaskTypeListCreateView, TaskTypeDetailView,
+    IndexView,
+    TaskTypeListCreateView,
+    TaskTypeDetailView,
 )
 
 urlpatterns = [
