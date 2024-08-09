@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="row">
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <h1>Task - {{ task.name }}</h1>
+        <a href="{% url "board:task-update" pk=task.id %}" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p><b>Task description: </b>{{ task.description }}</p>
+        <p><b>Deadline: </b>{{ task.deadline }}</p>
+        <p><b>Completed: </b>{{ task.is_completed }}</p>
+        <p><b>Priority: </b>{{ task.priority }}</p>
+        <p><b>Type: </b>{{ task.task_type }}</p>
+        <p>
+          <b>Assignees: </b>
+            {% if task.assignees.exists %}
+            <ul>
+              {% for assignee in task.assignees.all %}
+                <li><a href="{% url 'board:worker-detail' pk=assignee.id %}">{{ assignee }}</a></li>
+              {% endfor %}
+            </ul>
+            {% else %}
+            No assignees
+            {% endif %}
+        </p>
+        <br>
+        <br>
+        <a href="{% url 'board:task-delete' pk=task.id %}" class="btn btn-danger ml-2">Delete</a>
+      </div>  
+    </div>
+{% endblock %}
