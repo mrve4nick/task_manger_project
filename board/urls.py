@@ -38,8 +38,8 @@ urlpatterns = [
     path("board/task/create/", TaskCreateView.as_view(), name="task-create"),
     path("board/task/<int:pk>/update/", TaskUpdateView.as_view(), name="task-update"),
     path("board/task/<int:pk>/delete/", TaskDeleteView.as_view(), name="task-delete"),
-    path('task-type/', TaskTypeListCreateView.as_view(), name='task-type-list-create'),
-    path('task-type/<int:pk>/', TaskTypeDetailView.as_view(), name='task-type-detail'),
+    path("task-type/", TaskTypeListCreateView.as_view(), name="task-type-list-create"),
+    path("task-type/<int:pk>/", TaskTypeDetailView.as_view(), name="task-type-detail"),
 ]
 
 app_name = "board"
