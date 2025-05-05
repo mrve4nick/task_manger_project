@@ -15,7 +15,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-y=w(g&(ve-x5y30%bz%!7x^fn+urr(9%62797wuqhu-eyt+8pb")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +23,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-y=w(g&(ve-x5y30%bz%!7x^fn+urr(9%62797wuqhu-eyt+8pb"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
@@ -51,6 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -85,11 +83,19 @@ WSGI_APPLICATION = "task_manager.wsgi.application"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
-}
+       "default": {
+           "ENGINE": "django.db.backends.postgresql",
+           "NAME": os.environ.get("POSTGRES_DB"),
+           "USER": os.environ.get("POSTGRES_USER"),
+           "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+           "HOST": os.environ.get("POSTGRES_HOST"),
+           "PORT": os.environ.get("POSTGRES_DB_PORT"),
+           "OPTIONS": {
+               "sslmode": os.environ.get("PGSSLMODE"),
+           }
+       }
+   }
+
 
 
 # Password validation
@@ -127,6 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = "staticfiles/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
