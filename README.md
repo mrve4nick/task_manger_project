@@ -29,16 +29,14 @@ python manage.py runserver
 ```
 
 ## Screenshots
-![img.png](img.png)
-![img_1.png](img_1.png)
-![img_2.png](img_2.png)
-![img_3.png](img_3.png)
-![img_7.png](img_7.png)
-![img_5.png](img_5.png)
-![img_6.png](img_6.png)
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
-![img_10.png](img_10.png)
+<img width="1710" height="932" alt="Screenshot 2026-07-15 at 1 46 18 PM" src="https://github.com/user-attachments/assets/14cab235-bfa5-41b0-a1c0-9f8e3c1beb49" />
+<img width="1710" height="938" alt="Screenshot 2026-07-15 at 1 46 33 PM" src="https://github.com/user-attachments/assets/2fd0adc8-588d-42a6-aa06-c3263935c2d1" />
+<img width="1710" height="942" alt="Screenshot 2026-07-15 at 1 46 51 PM" src="https://github.com/user-attachments/assets/a37bcc8f-ba85-4673-9eee-5d6bdeb02988" />
+<img width="1710" height="941" alt="Screenshot 2026-07-15 at 1 47 18 PM" src="https://github.com/user-attachments/assets/cb4324e5-7881-4f28-a8f2-1b09d238f05d" />
+<img width="1710" height="895" alt="Screenshot 2026-07-15 at 1 47 24 PM" src="https://github.com/user-attachments/assets/a831c65a-21c5-4e91-8e6d-a37f9ad8f465" />
+
+
 
 ## DB schema
-![img_11.png](img_11.png)
+<img width="1536" height="1024" alt="db_scheme" src="https://github.com/user-attachments/assets/b5ca90b3-151d-4c69-8f84-c682f42fe816" />
+
