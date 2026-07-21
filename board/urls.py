@@ -23,7 +23,6 @@ from board.views import (
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index"),
-    path('accounts/', include('django.contrib.auth.urls')),
     path("admin/", admin.site.urls),
     path("board/positions/", PositionListView.as_view(), name="position-list"),
     path("board/positions/create/", PositionCreateView.as_view(), name="position-create"),
