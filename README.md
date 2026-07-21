@@ -29,9 +29,9 @@ python manage.py runserver
 ```
 
 ## Test demo
-https://task-manger-project-fkwu.onrender.com
-Login: user
-Password: user12345
+* https://task-manger-project-fkwu.onrender.com
+* Login: user
+* Password: user12345
 
 ## Screenshots
 <img width="1710" height="932" alt="Screenshot 2026-07-15 at 1 46 18 PM" src="https://github.com/user-attachments/assets/14cab235-bfa5-41b0-a1c0-9f8e3c1beb49" />
