@@ -6,7 +6,6 @@
     {% for task_type in task_type_list %}
     <li>
         {{ task_type.name }} - <a class="btn btn-primary" href="{% url 'board:task-type-detail' task_type.pk %}">Update</a>
-        <a href="{% url 'board:task-type-list-create' task_type.pk %}">Edit</a>
     </li>
     {% endfor %}
 </ul>
