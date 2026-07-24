@@ -59,7 +59,7 @@ class WorkerDetailView(LoginRequiredMixin, generic.DetailView):
 class TaskTypeListCreateView(LoginRequiredMixin, View):
     def get(self, request):
         task_types = TaskType.objects.all()
-        form = TaskTypeForm
+        form = TaskTypeForm()
         return render(request, 'board/tasktype_list.html', {'form': form, 'task_type_list': task_types})
 
     def post(self, request):
