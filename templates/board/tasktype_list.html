@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Task Types</h1>
+
+<ul>
+    {% for task_type in task_type_list %}
+    <li>
+        {{ task_type.name }} - <a class="btn btn-primary" href="{% url 'board:task-type-detail' task_type.pk %}">Update</a>
+        <a href="{% url 'board:task-type' task_type.pk %}">Edit</a>
+    </li>
+    {% endfor %}
+</ul>
+
+<h2>Add New Task Type</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Add Task Type</button>
+</form>
+{% endblock %}
