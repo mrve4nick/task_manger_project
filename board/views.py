@@ -78,16 +78,16 @@ class TaskTypeDetailView(LoginRequiredMixin, View):
 
     def post(self, request, pk):
         task_type = get_object_or_404(TaskType, pk=pk)
+
+        if request.POST.get("delete") == "true":
+            task_type.delete()
+            return redirect("board:task-type-list-create")
+
         form = TaskTypeForm(request.POST, instance=task_type)
         if form.is_valid():
             form.save()
             return redirect('board:task-type-list-create')
         return render(request, 'board/tasktype_detail.html', {'form': form, 'task_type': task_type})
-
-    def delete(self, request, pk):
-        task_type = get_object_or_404(TaskType, pk=pk)
-        task_type.delete()
-        return redirect('board:task-type-list-create')
 
 
 class TaskListView(generic.ListView):
