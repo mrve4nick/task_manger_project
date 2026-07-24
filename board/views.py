@@ -8,7 +8,7 @@ from board.models import Worker, Position, TaskType, Task
 from board.forms import TaskTypeForm
 
 
-class PositionListView(generic.ListView):
+class PositionListView(LoginRequiredMixin, generic.ListView):
     model = Position
     context_object_name = "position_list"
     template_name = "board/position_list.html"
@@ -31,7 +31,7 @@ class PositionDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("board:position-list")
 
 
-class WorkerListView(generic.ListView):
+class WorkerListView(LoginRequiredMixin, generic.ListView):
     model = Worker
     context_object_name = "worker_list"
     template_name = "board/worker_list.html"
@@ -91,7 +91,7 @@ class TaskTypeDetailView(LoginRequiredMixin, View):
         return render(request, 'board/tasktype_detail.html', {'form': form, 'task_type': task_type})
 
 
-class TaskListView(generic.ListView):
+class TaskListView(LoginRequiredMixin, generic.ListView):
     model = Task
     context_object_name = "task_list"
     template_name = "board/task_list.html"
