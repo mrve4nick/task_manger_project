@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic, View
 
-from board.forms import WorkerCreationForm, TaskCreationForm
+from board.forms import WorkerCreationForm, TaskCreationForm, WorkerUpdateForm
 from board.models import Worker, Position, TaskType, Task
 from board.forms import TaskTypeForm
 
@@ -44,7 +44,8 @@ class WorkerCreateView(LoginRequiredMixin, generic.CreateView):
 
 class WorkerUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Worker
-    form_class = WorkerCreationForm
+    form_class = WorkerUpdateForm
+    success_url = reverse_lazy("board:worker-list")
 
 
 class WorkerDeleteView(LoginRequiredMixin, generic.DeleteView):
