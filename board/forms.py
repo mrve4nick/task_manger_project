@@ -59,7 +59,7 @@ class WorkerUpdateForm(forms.ModelForm):
         return cleaned_data
 
     def save(self, commit=True):
-        worker = super.save(commit=False)
+        worker = super().save(commit=False)
         password = self.cleaned_data.get("password1")
 
         if password:
